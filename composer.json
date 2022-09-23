@@ -1,0 +1,23 @@
+{
+  "name": "ensi/laravel-serve-stoplight",
+  "description": "",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Bereza Evgeny",
+      "email": "bereza@greensight.ru"
+    }
+  ],
+  "require": {
+    "php": "^8.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Ensi\\LaravelServeStoplight\\": "src/"
+    }
+  },
+  "require-dev": {
+    "laravel/framework": "^8.0 || ^9.0"
+  }
+}

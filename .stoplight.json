@@ -1,0 +1,17 @@
+{
+  "formats": {
+    "markdown": {
+      "rootDir": "docs",
+      "include": ["docs/**", "CONTRIBUTING.md"]
+    },
+    "image": {
+      "rootDir": "docs/assets/images"
+    },
+    "openapi": {
+      "rootDir": "hidden"
+    },
+    "json_schema": {
+      "rootDir": "hidden"
+    }
+  }
+}
