@@ -9,7 +9,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class StoplightController
 {
-    public function documentation(?string $version): View
+    public function documentation(?string $version = null): View
     {
         $version = $version ?? config('serve-stoplight.default_version');
 
