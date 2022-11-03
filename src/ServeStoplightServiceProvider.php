@@ -24,6 +24,7 @@ class ServeStoplightServiceProvider extends ServiceProvider
             ->name('serve-stoplight.')
             ->prefix(config('serve-stoplight.path'))
             ->group(function () {
+                Route::get('assets/{asset}/{ext}', [StoplightController::class, 'asset'])->name('asset');
                 Route::get('{version?}', [StoplightController::class, 'documentation']);
             });
     }

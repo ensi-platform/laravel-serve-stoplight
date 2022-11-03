@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>{{ $name }}</title>
   <!-- Embed elements Elements via Web Component -->
-  <script src="https://unpkg.com/@stoplight/elements@v7/web-components.min.js"></script>
-  <link rel="stylesheet" href="https://unpkg.com/@stoplight/elements@v7/styles.min.css">
+  <script src="{{ route('serve-stoplight.asset', ['asset' => 'web-components.min', 'ext' => 'js'], false) }}"></script>
+  <link rel="stylesheet" href="{{ route('serve-stoplight.asset', ['asset' => 'styles.min', 'ext' => 'css'], false) }}">
 </head>
 <body>
 
