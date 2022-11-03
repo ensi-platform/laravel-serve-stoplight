@@ -13,6 +13,7 @@ test-results
 # production
 build
 dist
+!packages/elements/dist
 docs-auto
 dist-storybook
 
