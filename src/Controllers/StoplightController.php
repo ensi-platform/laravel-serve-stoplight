@@ -12,19 +12,14 @@ class StoplightController
     public function documentation(?string $version = null): View
     {
         $version = $version ?? config('serve-stoplight.default_version');
+        $this->url($version);
 
-        $urls = config('serve-stoplight.urls');
-        if (isset($urls[$version])) {
-            $url = $urls[$version];
-
-            return view('serve-stoplight::stoplight', $url);
-        } else {
-            throw new NotFoundHttpException();
-        }
+        return view('serve-stoplight::stoplight', $version);
     }
 
-    public function yaml(string $url): Response
+    public function yaml(string $version): Response
     {
+        $url = $this->url($version);
         $yaml = shell_exec("./vendor/bin/php-openapi convert --write-json ./public/" . $url);
 
         return (new Response($yaml, 200, [
@@ -32,6 +27,15 @@ class StoplightController
         ]));
     }
 
+    protected function url(string $version): string
+    {
+        $urls = config('serve-stoplight.urls');
+        if (isset($urls[$version])) {
+            return $urls[$version];
+        } else {
+            throw new NotFoundHttpException();
+        }
+    }
 
     public function asset(string $asset, string $ext): Response
     {

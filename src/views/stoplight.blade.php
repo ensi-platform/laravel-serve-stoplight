@@ -11,7 +11,7 @@
 <body>
 
 <elements-api
-        apiDescriptionUrl="{{ route('serve-stoplight.yaml', ['url' => $url], false) }}"
+        apiDescriptionUrl="{{ route('serve-stoplight.yaml', ['version' => $version], false) }}"
         router="{{ config('serve-stoplight.config.router') }}"
         layout="{{ config('serve-stoplight.config.layout') }}"
 />
