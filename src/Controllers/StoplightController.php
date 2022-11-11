@@ -23,7 +23,17 @@ class StoplightController
         }
     }
 
-    public function asset($asset, $ext): Response
+    public function yaml(string $url): Response
+    {
+        $yaml = shell_exec("./vendor/bin/php-openapi convert --write-json ./public/" . $url);
+
+        return (new Response($yaml, 200, [
+            'Content-Type' => 'text/yaml',
+        ]));
+    }
+
+
+    public function asset(string $asset, string $ext): Response
     {
         $assetFile = $asset . '.' . $ext;
         $path = $this->distPath($assetFile);
@@ -35,7 +45,7 @@ class StoplightController
             ->setExpires(new DateTime('+1 year'));
     }
 
-    protected function distPath($asset = null): string
+    protected function distPath(string $asset = null): string
     {
         $allowedFiles = [
             'web-components.min.js',
