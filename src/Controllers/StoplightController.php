@@ -41,7 +41,7 @@ class StoplightController
             default => throw new LogicException("You should specify .yaml or .json file as a source. \"$sourcePath\" was given instead"),
         };
 
-        return json_decode(json_encode($spec->getSerializableData(), true));
+        return json_decode(json_encode($spec->getSerializableData()), true);
     }
 
     protected function addPrefix(array $spec): array
