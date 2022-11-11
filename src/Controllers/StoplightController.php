@@ -12,26 +12,25 @@ class StoplightController
     public function documentation(?string $version = null): View
     {
         $version = $version ?? config('serve-stoplight.default_version');
-        $this->url($version);
 
-        return view('serve-stoplight::stoplight', $version);
+        return view('serve-stoplight::stoplight', $this->url($version));
     }
 
     public function yaml(string $version): Response
     {
         $url = $this->url($version);
-        $yaml = shell_exec("./vendor/bin/php-openapi convert --write-json ./public/" . $url);
+        $yaml = shell_exec("./vendor/bin/php-openapi convert --write-json ./public/" . $url['url']);
 
         return (new Response($yaml, 200, [
             'Content-Type' => 'text/yaml',
         ]));
     }
 
-    protected function url(string $version): string
+    protected function url(string $version): array
     {
         $urls = config('serve-stoplight.urls');
         if (isset($urls[$version])) {
-            return $urls[$version];
+            return array_merge($urls[$version], ['version' => $version]);
         } else {
             throw new NotFoundHttpException();
         }
