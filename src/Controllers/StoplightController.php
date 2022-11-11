@@ -2,9 +2,14 @@
 
 namespace Ensi\LaravelServeStoplight\Controllers;
 
+use cebe\openapi\Reader;
+use cebe\openapi\spec\OpenApi;
+use cebe\openapi\SpecObjectInterface;
+use cebe\openapi\Writer;
 use DateTime;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Response;
+use LogicException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class StoplightController
@@ -19,16 +24,33 @@ class StoplightController
     public function yaml(string $version): Response
     {
         $url = $this->url($version);
-        $command = base_path('vendor/bin/php-openapi');
-        $input = base_path('public/' . $url['url']);
-        $output = base_path('join.yaml');
-        shell_exec("$command convert --write-yaml $input > $output");
-        $yaml = file_get_contents($output);
-        unlink($output);
+        $spec = $this->parseSpec(base_path('public/' . $url['url']));
+        $spec = $this->addPrefix($spec);
+        $yaml = Writer::writeToYaml(new OpenApi($spec));
 
         return (new Response($yaml, 200, [
             'Content-Type' => 'text/yaml',
         ]));
+    }
+
+    protected function parseSpec(string $sourcePath): array
+    {
+        $spec = match (substr($sourcePath, -5)) {
+            '.yaml' => Reader::readFromYamlFile($sourcePath),
+            '.json' => Reader::readFromJsonFile($sourcePath),
+            default => throw new LogicException("You should specify .yaml or .json file as a source. \"$sourcePath\" was given instead"),
+        };
+
+        return json_decode(json_encode($spec->getSerializableData(), true));
+    }
+
+    protected function addPrefix(array $spec): array
+    {
+        foreach ($spec["servers"] as $i => $server) {
+            $spec["servers"][$i]["url"] = config("serve-stoplight.prefix") . $server["url"];
+        }
+
+        return $spec;
     }
 
     protected function url(string $version): array

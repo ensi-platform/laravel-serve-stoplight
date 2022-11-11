@@ -2,6 +2,7 @@
 
 return [
     'path' => 'docs/oas',
+    'prefix' => env('OAS_PREFIX', ''),
 
     'default_version' => 'v1',
 
