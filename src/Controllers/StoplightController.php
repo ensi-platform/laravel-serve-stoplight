@@ -19,9 +19,9 @@ class StoplightController
     public function yaml(string $version): Response
     {
         $url = $this->url($version);
-        $command = realpath(base_path('vendor/bin/php-openapi'));
-        $input = realpath(base_path('public/' . $url['url']));
-        $output = realpath(base_path('join.yaml'));
+        $command = base_path('vendor/bin/php-openapi');
+        $input = base_path('public/' . $url['url']);
+        $output = base_path('join.yaml');
         shell_exec("$command convert --write-yaml $input > $output");
         $yaml = file_get_contents($output);
         unlink($output);
