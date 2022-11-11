@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'path' => 'docs/swagger',
+    'path' => 'docs/oas',
 
     'default_version' => 'v1',
 

@@ -34,7 +34,6 @@
     "concurrently": "6.1.0",
     "css-loader": "6.7.1",
     "cssnano": "5.0.6",
-    "cypress": "^6.3.0",
     "eslint": "7.31.0",
     "eslint-plugin-import": "2.23.4",
     "eslint-plugin-jest": "24.4.0",
@@ -122,5 +121,7 @@
       "@commitlint/config-conventional"
     ]
   },
-  "dependencies": {}
+  "dependencies": {
+    "jest": "^29.3.1"
+  }
 }

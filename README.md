@@ -1,6 +1,8 @@
 # Laravel Serve Stoplight
 
-Пакет позволяет вывести спецификацию API, настроив только пути до ваших openapi3 конфигов
+Пакет позволяет вывести спецификацию API, настроив только пути до ваших openapi3 конфигов.
+
+Реализован на базе [stoplightio/elements](https://github.com/stoplightio/elements)
 
 ## Установка
 
