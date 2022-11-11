@@ -20,8 +20,11 @@ class StoplightController
     {
         $url = $this->url($version);
         $command = realpath(base_path('vendor/bin/php-openapi'));
-        $yaml = realpath(base_path('public/' . $url['url']));
-        $yaml = shell_exec("$command convert --write-yaml $yaml");
+        $input = realpath(base_path('public/' . $url['url']));
+        $output = realpath(base_path('join.yaml'));
+        shell_exec("$command convert --write-yaml $input > $output");
+        $yaml = file_get_contents($output);
+        unlink($output);
 
         return (new Response($yaml, 200, [
             'Content-Type' => 'text/yaml',
