@@ -33,11 +33,22 @@ class StoplightController
         ]));
     }
 
+    public function yamlPath(string $version, string $path): Response
+    {
+        $url = $this->url($version);
+        $oasDirectory = pathinfo($url['url'])['dirname'];
+        $yaml = file_get_contents(base_path('public/' . $oasDirectory . '/' . $path));
+
+        return (new Response($yaml, 200, [
+            'Content-Type' => 'text/yaml',
+        ]));
+    }
+
     protected function parseSpec(string $sourcePath): array
     {
         $spec = match (substr($sourcePath, -5)) {
-            '.yaml' => Reader::readFromYamlFile($sourcePath),
-            '.json' => Reader::readFromJsonFile($sourcePath),
+            '.yaml' => Reader::readFromYamlFile($sourcePath, OpenApi::class, false),
+            '.json' => Reader::readFromJsonFile($sourcePath, OpenApi::class, false),
             default => throw new LogicException("You should specify .yaml or .json file as a source. \"$sourcePath\" was given instead"),
         };
 
