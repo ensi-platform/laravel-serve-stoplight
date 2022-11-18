@@ -2,13 +2,12 @@
 
 return [
     'path' => 'docs/oas',
-    'prefix' => env('OAS_PREFIX', ''),
 
     'default_version' => 'v1',
 
     'urls' => [
         'v1' => [
-            'url' => 'api-docs/v1/index.yaml',
+            'url' => '/api-docs/v1/index.yaml',
             'name' => 'API v1',
         ],
     ],
