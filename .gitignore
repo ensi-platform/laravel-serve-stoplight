@@ -3,6 +3,7 @@ vendor
 node_modules
 /.pnp
 .pnp.js
+composer.lock
 
 # testing
 /coverage
