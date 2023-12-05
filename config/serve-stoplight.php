@@ -44,5 +44,6 @@ return [
         |
         */
         'layout' => "sidebar",
+        'absolute_url_for_asset' => false,
     ]
 ];
