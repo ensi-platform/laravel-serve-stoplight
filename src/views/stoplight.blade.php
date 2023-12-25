@@ -11,7 +11,7 @@
 <body>
 
 <elements-api
-        apiDescriptionUrl="{{ $url }}"
+        apiDescriptionUrl="{{ asset($url) }}"
         router="{{ config('serve-stoplight.config.router') }}"
         layout="{{ config('serve-stoplight.config.layout') }}"
 />
