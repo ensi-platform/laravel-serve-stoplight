@@ -7,8 +7,8 @@
 ## Установка
 
 1. `composer require ensi/laravel-serve-stoplight`
-2. Добавьте `Ensi\LaravelServeStoplight\ServeStoplightServiceProvider::class` в Package Service Providers в `config/app.php`
-3. Скопируйте себе `config/serve-stoplight.php` и настройте путь для роутинга и массив ссылок до ваших openapi3 конфигов
+2. `php artisan vendor:publish --provider="Ensi\LaravelServeStoplight\ServeStoplightServiceProvider"`
+3. Настройте путь для роутинга и массив ссылок до ваших openapi3 конфигов
 
 ## Формат массива urls в конфиге 
 

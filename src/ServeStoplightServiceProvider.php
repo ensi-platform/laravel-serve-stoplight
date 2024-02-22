@@ -16,8 +16,6 @@ class ServeStoplightServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([__DIR__ . '/../config/serve-stoplight.php' => config_path('serve-stoplight.php')]);
-        $this->mergeConfigFrom(__DIR__ . '/../config/serve-stoplight.php', 'serve-stoplight');
-
         $this->loadViewsFrom(__DIR__ . '/views', 'serve-stoplight');
 
         Route::namespace('Ensi\LaravelServeStoplight\Controllers')
@@ -27,5 +25,15 @@ class ServeStoplightServiceProvider extends ServiceProvider
                 Route::get('assets/{asset}/{ext}', [StoplightController::class, 'asset'])->name('asset');
                 Route::get('{version?}', [StoplightController::class, 'documentation']);
             });
+    }
+
+    /**
+     * Register the service provider.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        $this->mergeConfigFrom(__DIR__ . '/../config/serve-stoplight.php', 'serve-stoplight');
     }
 }
