@@ -45,7 +45,7 @@ class StoplightController
             'styles.min.css',
         ];
 
-        $path = base_path('vendor/ensi/laravel-serve-stoplight/packages/elements/dist/');
+        $path = base_path('vendor/ensi/laravel-serve-stoplight/stoplight-resources/');
 
         if (!$asset) {
             return realpath($path);

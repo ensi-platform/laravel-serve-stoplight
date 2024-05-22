@@ -1,23 +1,50 @@
 {
-  "name": "ensi/laravel-serve-stoplight",
-  "description": "",
-  "type": "library",
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "Bereza Evgeny",
-      "email": "bereza@greensight.ru"
+    "name": "ensi/laravel-serve-stoplight",
+    "description": "Laravel serve stoplight",
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "php": "^8.1",
+        "laravel/framework": "^9.0 || ^10.0 || ^11.0"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.2",
+        "pestphp/pest": "^1.22 || ^2.0",
+        "pestphp/pest-plugin-laravel": "^1.1 || ^2.0",
+        "phpstan/extension-installer": "^1.3",
+        "phpstan/phpstan": "^1.11",
+        "spaze/phpstan-disallowed-calls": "^2.15",
+        "orchestra/testbench": "^7.0 || ^8.0 || ^9.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ensi\\LaravelServeStoplight\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Ensi\\LaravelServeStoplight\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "cs": "php-cs-fixer fix --config .php-cs-fixer.php",
+        "phpstan": "phpstan analyse",
+        "test": "./vendor/bin/pest --parallel --no-coverage",
+        "test-ci": "./vendor/bin/pest --no-coverage",
+        "test-coverage": "XDEBUG_MODE=coverage ./vendor/bin/pest --parallel --coverage"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Ensi\\LaravelServeStoplight\\ServeStoplightServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "phpstan/extension-installer": true
+        }
     }
-  ],
-  "require": {
-    "php": "^8.0"
-  },
-  "autoload": {
-    "psr-4": {
-      "Ensi\\LaravelServeStoplight\\": "src/"
-    }
-  },
-  "require-dev": {
-    "laravel/framework": "^8.0 || ^9.0 || ^10.0 || ^11.0"
-  }
 }
