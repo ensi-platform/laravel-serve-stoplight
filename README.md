@@ -24,12 +24,6 @@ php artisan vendor:publish --provider="Ensi\LaravelServeStoplight\ServeStoplight
 
 Configure `config/serve-stoplight.php`
 
-## Viewing the specification
-
-By default, the `v1` specification is available at `docs/oas` (the same full path as `docs/oas/v1`).
-
-If you need to open a specification of another version, use the `docs/os/{version}` path, for example, `docs/os/v2`
-
 ## Version Compatibility
 
 | Laravel Serve Stoplight | Laravel                              | PHP  | Stoplight |
@@ -39,6 +33,11 @@ If you need to open a specification of another version, use the `docs/os/{versio
 | ^0.1.7                  | ^8.0 \|\| ^9.0 \|\| ^10.0 \|\| ^11.0 | ^8.0 | 7.7.2     |
 | ^0.2.0                  | ^9.0 \|\| ^10.0 \|\| ^11.0           | ^8.1 | 8.1.3     |
 
+## Basic usage
+
+By default, the `v1` specification is available at `docs/oas` (the same full path as `docs/oas/v1`).
+
+If you need to open a specification of another version, use the `docs/os/{version}` path, for example, `docs/os/v2`
 
 ## Contributing
 
