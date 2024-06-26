@@ -8,15 +8,14 @@ use Illuminate\Support\ServiceProvider;
 
 class ServeStoplightServiceProvider extends ServiceProvider
 {
-    /**
-     * Выполнение после-регистрационной загрузки сервисов.
-     *
-     * @return void
-     */
-    public function boot()
+    public function register(): void
+    {
+        $this->mergeConfigFrom(__DIR__ . '/../config/serve-stoplight.php', 'serve-stoplight');
+    }
+
+    public function boot(): void
     {
         $this->publishes([__DIR__ . '/../config/serve-stoplight.php' => config_path('serve-stoplight.php')]);
-        $this->mergeConfigFrom(__DIR__ . '/../config/serve-stoplight.php', 'serve-stoplight');
 
         $this->loadViewsFrom(__DIR__ . '/views', 'serve-stoplight');
 

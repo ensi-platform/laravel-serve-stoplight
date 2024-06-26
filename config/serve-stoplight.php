@@ -7,8 +7,8 @@ return [
 
     'urls' => [
         'v1' => [
-            'url' => '/api-docs/v1/index.yaml',
-            'name' => 'API v1',
+            'url' => '/api-docs/v1/index.yaml', // Path in public dir
+            'name' => 'API v1', // The name to display in the interface
         ],
     ],
 
@@ -44,5 +44,5 @@ return [
         |
         */
         'layout' => "sidebar",
-    ]
+    ],
 ];

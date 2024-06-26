@@ -1,55 +1,85 @@
-# dependencies
-vendor
-node_modules
-/.pnp
-.pnp.js
-composer.lock
-
-# testing
-/coverage
-packages/*/coverage
-cypress/results
-test-results
-
-# production
+# Project #
+########################
+.php_cs.cache
+.php-cs-fixer.cache
+.huskyrc
+clients/*
+!clients/.gitkeep
+storage/ensi
+generated
+studio.json
 build
-dist
-!packages/elements/dist
-docs-auto
-dist-storybook
+/node_modules
+/vendor
+.phpunit.result.cache
+composer.lock
+composer.local.json
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
 
-# misc
+# IDEs #
+###################
 *.sublime-project
 *.sublime-workspace
+/.idea
+/.vscode
 *.komodoproject
-.DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
 .vscode
-.idea
-.nyc_output
-.awcache
-.cache-loader
-.cache
-.rpt2_cache
-.eslintcache
-/examples-dev
 
-# logs
-*.log*
-*-debug.log*
-*-error.log*
-/examples/react-gatsby/yarn.lock
-/examples/react-cra/yarn.lock
-/examples/angular/yarn.lock
+# Static content #
+###################
+*.csv
+*.pdf
+*.doc
+*.docx
+*.xls
+*.xlsx
+*.xml
+!phpunit.xml
+!psalm.xml
+*.yml
+*.txt
+*.wav
+*.mp3
+*.avi
 
-# Vim buffer files
-*.swp
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+*.box
 
-# Stoplight style guides
-.stoplight/styleguide.json
-.stoplight/custom-functions
-.spectral.json
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.tgz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+*.phar
 
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+.nfs*
+._*
+.Spotlight-V100
+.Trashes
+.vagrant
+ehthumbs.db
+Thumbs.db
+sftp-config.json
+auth.json
