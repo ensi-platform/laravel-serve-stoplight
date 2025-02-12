@@ -38,7 +38,7 @@ class StoplightController
             ->setExpires(new DateTime('+1 year'));
     }
 
-    protected function distPath(string $asset = null): string
+    protected function distPath(?string $asset = null): string
     {
         $allowedFiles = [
             'web-components.min.js',
